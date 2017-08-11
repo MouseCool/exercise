@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style>
+            * {
+            	margin: 0;
+            	padding: 0;
+            }
+        	body {
+        		font-family: KaiTi;
+        		background: #000;
+
+        	}
+            .box {
+               width: 450px;
+               height: 240px;
+               background-color: #fff;
+               margin: 0 auto;
+               margin-top: 180px;
+            }
+            .aaa {
+            	float: left;
+            	padding: 0;
+            }
+            
+            .first {
+            	diaplay: block;
+            	width: 50px;
+            	height: 50px;
+            	border-radius: 50px;
+            }
+            header::after {
+            	content: '';
+        		display: block;
+        		clear: both;
+        		overflow: hidden;
+            }
+        	.bbb {
+        		width: 100px;
+        		height: 100px;
+        		margin: 10px;
+        		float: right;
+        	}
+        	main::after {
+        		content: '';
+        		display: block;
+        		clear: both;
+        	}
+        	.ccc {
+        		font-size: 18px;
+        		padding: 10px auto;
+        	}
+        	ul>li {
+        		list-style: none;
+        		display: inline-block;
+        	}
+        	.book {
+        		color: red;
+        		border: 1px solid red;
+        		font-size: 15px;
+        	}
+        </style>
+    </head>
+    <body>
+    <div class="box">
+    <header>
+    	<div class="aaa">
+    		<img class="first" src="http://ww1.sinaimg.cn/large/0069jr7igy1fifp8nbu5oj302b02fjr8.jpg" alt="头像">
+    	</div>
+    	<div class="aaa">江昭和 昨天 15:49</div>
+    </header>
+    <main>
+    	<h2>[简书交友]江昭和：渴望像风一样的男子</h2>
+    	<img class="bbb" src="http://ww1.sinaimg.cn/large/0069jr7igy1fifpi0bkddj304603cmxg.jpg" alt="图片">
+    	<div class="ccc">
+    	昵称：江昭和 地点：一座离武汉迷一般近的城市 交友宣言：若你喜欢怪人，其实我很美。自荐文章：我在秋天里，像一尾鱼 最琐碎的烟火在人间，遇见最亲的人自述：有关...
+    	</div>
+    </main>
+    <footer>
+    	<ul>
+    	    <li class="book">简书交友</li>
+    		<li><span class="eye icon">&#xe60e;</span>2183</li>
+    		<li><span class="message icon">&#xe60f;</span>99</li>
+    		<li><span class="like icon">&#xe633;</span>99</li>
+    		<li><span class="money icon">&#xe634;</span>1</li>
+    	</ul>
+    </footer>
+    </div>
+    </body>
+</html>
