@@ -22,10 +22,10 @@
             .aaa {
             	float: left;
             	padding: 0;
+                vertical-align: middle;
+                height: 100%;
             }
-            
             .first {
-            	diaplay: block;
             	width: 50px;
             	height: 50px;
             	border-radius: 50px;
@@ -34,7 +34,6 @@
             	content: '';
         		display: block;
         		clear: both;
-        		overflow: hidden;
             }
         	.bbb {
         		width: 100px;
@@ -49,7 +48,7 @@
         	}
         	.ccc {
         		font-size: 18px;
-        		padding: 10px auto;
+        		padding: 10px;
         	}
         	ul>li {
         		list-style: none;
@@ -60,6 +59,17 @@
         		border: 1px solid red;
         		font-size: 15px;
         	}
+            @font-face {
+              font-family: 'iconfont';  /* project id 382229 */
+              src: url('http://at.alicdn.com/t/font_382229_n3fjmnr9prsve7b9.eot');
+              src: url('http://at.alicdn.com/t/font_382229_n3fjmnr9prsve7b9.eot?#iefix') format('embedded-opentype'),
+              url('http://at.alicdn.com/t/font_382229_n3fjmnr9prsve7b9.woff') format('woff'),
+              url('http://at.alicdn.com/t/font_382229_n3fjmnr9prsve7b9.ttf') format('truetype'),
+              url('http://at.alicdn.com/t/font_382229_n3fjmnr9prsve7b9.svg#iconfont') format('svg');
+            }
+            span {
+                font-family: iconfont;
+            }
         </style>
     </head>
     <body>
@@ -80,10 +90,10 @@
     <footer>
     	<ul>
     	    <li class="book">简书交友</li>
-    		<li><span class="eye icon">&#xe60e;</span>2183</li>
-    		<li><span class="message icon">&#xe60f;</span>99</li>
-    		<li><span class="like icon">&#xe633;</span>99</li>
-    		<li><span class="money icon">&#xe634;</span>1</li>
+    		<li><span>&#xe60e;</span>2183</li>
+    		<li><span>&#xe60f;</span>99</li>
+    		<li><span>&#xe633;</span>99</li>
+    		<li><span>&#xe634;</span>1</li>
     	</ul>
     </footer>
     </div>

@@ -1,0 +1,94 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+html,body {
+	height: 100%;
+}
+a {
+	text-decoration: none;
+}
+ul {
+	list-style: none;
+}
+header,section {
+	position: relative;
+	min-height: 100%;
+}
+header {
+	background: url(http://ww1.sinaimg.cn/large/0069jr7igy1fijizpnvrnj30xr0jx0wn.jpg) no-repeat center center;
+	background-size: cover;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+nav {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	background: rgba(0,0,0,0.2);
+	z-index: 1;
+}
+.navbar {
+	height: 120px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.navbar>ul>li{
+	float: left;
+}
+.navbar a {
+	color: white;
+	font-size: 20px;
+	padding: 0 10px;
+	cursor: pointer;
+}
+.navbar a:hover {
+	color: red;
+}
+img {
+	width: 200px;
+	height: 120px;
+}
+header {
+	text-align: center;
+	padding: 50px;
+}
+.header-v>h3 {
+	font-size: 40px;
+	color: white;
+}
+.header-v>h1 {
+	font-size: 60px;
+	color: white;
+	padding: 40px;
+}
+.btn {
+	display: inline-block;
+	border: 1px solid yellow;
+	background-color: yellow;
+	font-size: 40px;
+	border-radius: 2px;
+	color: white;
+}
+.section-a {
+	display: flex;
+  	justify-content: center;
+  	align-items: center;
+}
+.section-a .zi {
+	padding: 0 50px 50px 0;
+	text-align: center;
+}
+.section-a .zi h2 {
+	color: red;
+	font-size: 50px;
+}
+.section-a .zi h3 {
+	color: red;
+	font-size: 40px;
+}
+.section-a .zong .fu {
+	float: left;
+}
