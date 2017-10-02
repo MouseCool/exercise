@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.overall .up:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+.overall .up .tab{
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  float: left;
+  background: #ddd;
+  padding: 5px 20px;
+  cursor: pointer;
+}
+.overall .up .tab:last-child {
+  border-right: 1px solid #ccc;
+}
+.overall .up .active {
+  background: #fff;
+}
+.overall .down {
+  border:1px solid #ccc;
+  width:200px;
+  height:150px;
+  background: #fff;  
+}
+.overall .down .panel {
+  padding: 60px;
+  background: #fff;
+  display: none;
+}
+.overall .down .active {
+  display: block;
+}
+	</style>
+</head>
+<body>
+	<div class="overall">
+      <div class="up">
+        <div class="tab active">1</div>
+        <div class="tab">2</div>
+        <div class="tab">3</div>
+        <div class="tab">4</div>
+      </div>
+      <div class="down">
+        <div class="panel active">panel1</div>
+        <div class="panel">panel2</div>
+        <div class="panel">panel3</div>
+        <div class="panel">panel4</div>
+      </div>
+    </div>
+  <div class="overall">
+      <div class="up">
+        <div class="tab active">1</div>
+        <div class="tab">2</div>
+        <div class="tab">3</div>
+        <div class="tab">4</div>
+      </div>
+      <div class="down">
+        <div class="panel active">panel1</div>
+        <div class="panel">panel2</div>
+        <div class="panel">panel3</div>
+        <div class="panel">panel4</div>
+      </div>
+    </div>
+    <script>
+    	$(".overall .tab").on("click", function(){
+  $(this).addClass("active")
+         .siblings()
+         .removeClass("active")
+  $(this).parents(".overall")
+         .find(".panel")
+         .eq($(this).index())
+         .addClass("active")
+         .siblings()
+         .removeClass("active")
+})
+    </script>
+</body>
+</html>
