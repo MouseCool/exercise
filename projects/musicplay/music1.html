@@ -158,7 +158,7 @@
 			var min = Math.floor(this.currentTime/60)
 			var sec = Math.floor(this.currentTime)%60 + ""
 			sec = sec.length === 2? sec : "0" + sec
-			
+
 		}
 
 
@@ -169,7 +169,7 @@
 
 		function getMusicList(callback){
 			var xhr = new XMLHttpRequest()
-			xhr.open("GET","/project/resume/projects/musicplay/music1.json",true)
+			xhr.open("GET","/music1.json",true)
 			xhr.onload = function(){
 				if((xhr.status >=200 && xhr.status <300) ||xhr.status === 304){
 					callback(JSON.parse(this.responseText))
