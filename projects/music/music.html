@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="http://at.alicdn.com/t/font_382229_b2sdayq52yt1q0k9.css">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		html,body {
+			height: 100%;
+		}
+		.background {
+			background: linear-gradient(rgba(30,40,60,0.5),rgba(200,150,20,0.82)), url("http://ww1.sinaimg.cn/large/0069jr7igy1fkanwzwhcoj30rs0rs0v0.jpg") center center no-repeat;
+			background-size: cover;
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+		}
+		.musicplay {
+			padding: 30px 40px 30px 40px;
+			height: 75%;
+			position: relative;
+		}
+	</style>
+</head>
+<body>
+	<div class="background"></div>
+	<div class="musicplay">
+		<div class="left">
+			<div class="musicimg"></div>
+			<div class="icon">
+				<span class="iconfont icon-love"></span>
+				<span class="iconfont icon-last"></span>
+				<span class="iconfont icon-pause"></span>
+				<span class="iconfont icon-next"></span>
+			</div>
+		</div>
+		<div class="right">
+			<span class="color">永远18岁</span>
+			<h2>It's a beautiful day</h2>
+			<div class="group">
+				<span class="iconfont icon-listener">40398</span>
+				<span class="iconfont icon-love">1068</span>
+				<span class="iconfont icon-radio">LavaRadio</span>
+			</div>
+			<div class="progress">
+				<div class="short"></div>
+			</div>
+			<div class="timer">
+				<span class="minute">0</span><span>:</span><span class="second">00</span>
+			</div>
+			<div class="name">name</div>
+			<div class="author">author</div>
+		</div>
+	</div>
+	<div class="musicsort">
+		<div class="musicsort-bg"></div>
+		<ul>
+			<li>
+				<img src="" alt="">
+				<p></p>
+			</li>
+			<li>
+				<img src="" alt="">
+				<p></p>
+			</li>
+			<li>
+				<img src="" alt="">
+				<p></p>
+			</li>
+			<li>
+				<img src="" alt="">
+				<p></p>
+			</li>
+			<li>
+				<img src="" alt="">
+				<p></p>
+			</li>
+			<li>
+				<img src="" alt="">
+				<p></p>
+			</li>
+		</ul>
+	</div>
+	<div class="currentsong">
+		<div class="musicimg"></div>
+		<div class="down">
+			<div class="down-bg"></div>
+			<div class="progress">
+				<div class="short"></div>
+			</div>
+			<div class="timer">
+				<span class="minute">0</span><span>:</span><span class="second">00</span>
+			</div>
+			<div class="name">name</div>
+			<div class="author">author</div>
+		</div>
+	</div>
+	<script>
+		function getSort(){
+			var xhr = new XMLHttpRequest()
+			xhr.open("GET","https://jirenguapi.applinzi.com/fm/getChannels.php",true)
+			xhr.onload = function(){
+				if((xhr.status >=200 && xhr.status <300) || xhr.status ==304){
+					var 
+				}else{
+					console.log("服务器异常")
+				}
+			}
+			xhr.send()
+		}
+	</script>
+</body>
+</html>
