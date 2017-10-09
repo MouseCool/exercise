@@ -158,7 +158,10 @@
 			sec = sec.length === 2? sec : "0" + sec
 			S(".musicbox .time").innerText = min + ":" +sec
 		}
-
+		function loadMusic(musicObj){
+			console.log("begin play", musicObj)
+			audio.src = musicObj.src
+		}
 
 
 		function $(selector){
