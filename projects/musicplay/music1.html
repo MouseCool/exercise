@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<link rel="stylesheet" href="//at.alicdn.com/t/font_382229_b2sdayq52yt1q0k9.css">
+	<link rel="stylesheet" href="//at.alicdn.com/t/font_382229_urb5vlwd3knpnwmi.css">
 	<style>
 		* {
 			margin: 0;
@@ -39,7 +39,7 @@
 			background-color: rgba(255,255,255,0.9);
 		}
 		.musicbox .control {
-			margin-top: 20px;
+			margin-top: 30px;
 			font-size: 22px;
 			color: #ee8a87;
 			float: left;
@@ -49,7 +49,7 @@
 			cursor: pointer;
 		}
 		.musicbox .control .iconfont.disable {
-			opacity: 0.3;
+			opacity: 0.5;
 		}
 		.musicbox .info {
 			margin-left: 120px;
@@ -130,11 +130,12 @@
 					<div class="progress-total"></div>
 					<div class="progress-now"></div>
 				</div>
+				
 				<div class="time">0:00</div>
 			</div>
 		</div>
 		<ul class="list">
-			<!-- <li>贰佰-玫瑰</li> -->
+			
 		</ul>
 	</div>
 	<script>
@@ -147,21 +148,92 @@
 
 
 		getMusicList(function(list){
+			musicList = list
 			loadMusic(list[currentIndex])
+			generateList(list)
 		})
 
 		audio.ontimeupdate = function(){
-			console.log(this.currentTime)
 			$(".musicbox .progress-now").style.width = (this.currentTime/this.duration)*100 + "%"
-			var min = Math.floor(this.currentTime/60)
-			var sec = Math.floor(this.currentTime)%60 + ""
-			sec = sec.length === 2? sec : "0" + sec
-			S(".musicbox .time").innerText = min + ":" +sec
 		}
+
+		audio.onplay = function(){
+	      	clock = setInterval(function(){
+		        var min = Math.floor(audio.currentTime/60)
+		        var sec = Math.floor(audio.currentTime)%60 + ''
+		        sec = sec.length === 2? sec : '0' + sec
+		        $('.musicbox .time').innerText = min + ':' + sec
+	      	}, 1000)
+   	 	}
+
+		audio.onpause = function(){
+			clearInterval(clock)
+		}
+
+		audio.onended = function(){
+			currentIndex = (++currentIndex)%musicList.length
+			loadMusic(musicList[currentIndex])
+		}
+
+		$(".musicbox .play").onclick = function(){
+			if(audio.paused){
+				audio.play()
+				this.querySelector(".iconfont").classList.remove("icon-play")
+				this.querySelector(".iconfont").classList.add("icon-pause")
+			}else{
+				audio.pause()
+				this.querySelector(".iconfont").classList.remove("icon-pause")
+				this.querySelector(".iconfont").classList.add("icon-play")
+			}
+		}
+
+		$(".musicbox .forward").onclick = function(){
+			currentIndex = (++currentIndex)%musicList.length
+			loadMusic(musicList[currentIndex])			
+		}
+
+		$(".musicbox .back").onclick = function(){
+			currentIndex = (musicList.length + --currentIndex)%musicList.length
+			loadMusic(musicList[currentIndex])
+		}
+
+		$(".musicbox .bar").onclick = function(e){
+			var percent = e.offsetX / parseInt(getComputedStyle(this).width)
+			audio.currentTime = audio.duration * percent
+		}
+
+
+		function generateList(list){
+			for(var i = 0; i<list.length ; i++){
+				var child = document.createElement("li")
+				var text = document.createTextNode(list[currentIndex].title + " - " + list[currentIndex].auther)
+				currentIndex++
+				child.appendChild(text)
+				$(".musicbox .list").append(child)
+			}
+		}
+
+		$(".musicbox .list").onclick = function(e){
+			if(e.target.tagName.toLowerCase() === "li"){
+				for(var i = 0; i < this.children.length; i++){
+					if(this.children[i] === e.target){
+						currentIndex = i
+					}
+				}
+				loadMusic(musicList[currentIndex])
+			}	
+		}
+
+
+
 		function loadMusic(musicObj){
 			console.log("begin play", musicObj)
+			$(".musicbox .title").innerText = musicObj.title
+			$(".musicbox .auther").innerText = musicObj.auther
+			$(".cover").style.background = "url(" + musicObj.img + ")"
 			audio.src = musicObj.src
 		}
+
 
 
 		function $(selector){
