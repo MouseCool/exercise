@@ -3,119 +3,186 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<link rel="stylesheet" href="http://at.alicdn.com/t/font_382229_b2sdayq52yt1q0k9.css">
+	<link rel="stylesheet" href="http://at.alicdn.com/t/font_382229_i6zc42wyg7v9ggb9.css">
 	<style>
 		* {
-			margin: 0;
 			padding: 0;
+			margin: 0;
 			box-sizing: border-box;
 		}
-		html,body {
+		html, bod {
 			height: 100%;
 		}
-		.background {
-			background: linear-gradient(rgba(30,40,60,0.5),rgba(200,150,20,0.82)), url("http://ww1.sinaimg.cn/large/0069jr7igy1fkanwzwhcoj30rs0rs0v0.jpg") center center no-repeat;
-			background-size: cover;
+		.clearfix::after {
+			content: "";
+			display: block;
+			clear: both;
+		}
+		.hide {
+			display: none;
+		}
+		.content {
+			width: 100%;
 			position: absolute;
 			top: 0;
-			right: 0;
-			bottom: 0;
-			left: 0;
 		}
-		.musicplay {
-			padding: 30px 40px 30px 40px;
-			height: 75%;
+		ul, li {
+			list-style: none;
+		}
+		.cover {
 			position: relative;
+			height: 100%;
+			background: url(images/album1.jpg) center center no-repeat;
+			background-size: cover;
+			filter: blur(5px);
+		}
+
+
+
+
+		.content .interface {
+			float: left;
+			margin-right: 110px;
+		}
+		.content .interface .album-img {
+			width: 350px;
+			height: 350px;
+		}
+		.content .interface .album-img img {
+			width: 100%;
+			height: 100%;
+		}
+		.content .interface .interface-panel {
+			text-align: center;
+			padding: 16px;
+		}
+		.content .interface .interface-panel span {
+			padding: 0 30px;
+			display: inline-block;
+			color: #fff;
+			cursor: pointer;
+		}
+		.content .interface .interface-panel span:hover {
+			color: #aaa;
+		}
+		.content .info {
+			margin-left: 500px;
+		}
+		.content .info .album-name {
+			display: inline-block;
+			background: red;
+			padding: 8px 15px;
+			color: #fff;
+			border-radius: 3px;
+			font-size: 15px;
+		}
+		.content .info .about {
+			margin-top: 30px;
+			font-size: 35px;
+			font-weight: 300;
+			margin-bottom: 100px;
+			color: #fff;
+		}
+		.content .info .data>span {
+			padding: 0 60px 0 0;
+			color: #fff;
+		}
+		.content .info .progress {
+			width: 550px;
+			margin-top: 60px;
+		}
+		.content .info .progress .bar {
+			height: 3px;
+			margin-top: 5px;
+			background-color: rgba(0,0,0,0.2);
+			cursor: pointer;
+		}
+		.content .info .progress .progress-now {
+			background-color: #ccc;
+			height: 3px;
+			width: 0;
+			position: relative;
+		}
+		.content .info .time,
+		.song-name,
+		.author {
+			color: #fff;
+			font-size: 18px;
+			margin-top: 10px;
+		}
+		.content .info .time {
+			float: right;
 		}
 		
 	</style>
 </head>
 <body>
-	<div class="background"></div>
-	<div class="musicplay">
-		<div class="left">
-			<div class="musicimg"></div>
-			<div class="icon">
-				<span class="iconfont icon-love"></span>
-				<span class="iconfont icon-last"></span>
+	<div class="cover"></div>
+	<div class="content">
+		<div class="interface clearfix">
+			<div class="album-img"></div>
+			<div class="interface-panel">
+				<span class="iconfont icon-like"></span>
 				<span class="iconfont icon-pause"></span>
 				<span class="iconfont icon-next"></span>
 			</div>
 		</div>
-		<div class="right">
-			<span class="color">永远18岁</span>
-			<h2>It's a beautiful day</h2>
-			<div class="group">
-				<span class="iconfont icon-listener">40398</span>
-				<span class="iconfont icon-love">1068</span>
-				<span class="iconfont icon-radio">LavaRadio</span>
+		<div class="info clearfix">
+			<div class="album-name"></div>
+			<div class="about"></div>
+			<div class="data">
+				<span class=" iconfont icon-listen">&nbsp;&nbsp;666</span>
+				<span class="iconfont icon-like">&nbsp;&nbsp;888</span>
+				<span class="iconfont icon-R">&nbsp;&nbsp;LavaRadio</span>
 			</div>
 			<div class="progress">
-				<div class="short"></div>
+				<div class="bar">
+					<div class="progress-total"></div>
+					<div class="progress-now"></div>
+				</div>
 			</div>
-			<div class="timer">
-				<span class="minute">0</span><span>:</span><span class="second">00</span>
-			</div>
-			<div class="name">name</div>
-			<div class="author">author</div>
+			<div class="time clear-fix">0:00</div>
+			<div class="song-name">kushuhaha</div>
+			<div class="author">zhangnanji</div>
 		</div>
-	</div>
-	<div class="musicsort">
-		<div class="musicsort-bg"></div>
-		<ul>
+		<ul class="album-list clear-fix">
 			<li>
 				<img src="" alt="">
-				<p></p>
+				<p>1</p>
 			</li>
 			<li>
 				<img src="" alt="">
-				<p></p>
+				<p>2</p>
 			</li>
 			<li>
 				<img src="" alt="">
-				<p></p>
+				<p>3</p>
 			</li>
 			<li>
 				<img src="" alt="">
-				<p></p>
+				<p>4</p>
 			</li>
 			<li>
 				<img src="" alt="">
-				<p></p>
+				<p>5</p>
 			</li>
 			<li>
 				<img src="" alt="">
-				<p></p>
+				<p>6</p>
 			</li>
 		</ul>
 	</div>
-	<div class="currentsong">
-		<div class="musicimg"></div>
-		<div class="down">
-			<div class="down-bg"></div>
-			<div class="progress">
-				<div class="short"></div>
+	<div class="play hide">
+		<div class="play-img"></div>
+		<div class="update">
+			<div class="play-bar">
+				<div class="play-progress-total"></div>
+				<div class="play-progress-now"></div>
 			</div>
-			<div class="timer">
-				<span class="minute">0</span><span>:</span><span class="second">00</span>
-			</div>
-			<div class="name">name</div>
-			<div class="author">author</div>
+			<div class="play-time clearfix"></div>
+			<div class="play-title"></div>
+			<div class="play-author"></div>
 		</div>
 	</div>
-	<script>
-		function getSort(){
-			var xhr = new XMLHttpRequest()
-			xhr.open("GET","https://jirenguapi.applinzi.com/fm/getChannels.php",true)
-			xhr.onload = function(){
-				if((xhr.status >=200 && xhr.status <300) || xhr.status ==304){
-					var 
-				}else{
-					console.log("服务器异常")
-				}
-			}
-			xhr.send()
-		}
-	</script>
 </body>
 </html>
