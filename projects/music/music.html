@@ -3,186 +3,408 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<link rel="stylesheet" href="http://at.alicdn.com/t/font_382229_i6zc42wyg7v9ggb9.css">
+	<link rel="stylesheet" href="//at.alicdn.com/t/font_450162_vs7ddco2wnze61or.css">
+	<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 	<style>
 		* {
-			padding: 0;
 			margin: 0;
+			padding: 0;
 			box-sizing: border-box;
 		}
-		html, bod {
+		html, body, main{
 			height: 100%;
 		}
-		.clearfix::after {
-			content: "";
-			display: block;
-			clear: both;
+		body {
+			font: 14px/1.5 Arial;
 		}
-		.hide {
-			display: none;
-		}
-		.content {
-			width: 100%;
-			position: absolute;
-			top: 0;
+		a {
+			text-decoration: none;
+			color: #444;
 		}
 		ul, li {
 			list-style: none;
 		}
-		.cover {
-			position: relative;
+		html, body, section {
 			height: 100%;
-			background: url(images/album1.jpg) center center no-repeat;
+			overflow: hidden;
+		}
+		.layout {
+			margin: 0 auto;
+			width: 600px;
+		}
+		@media (min-width: 700px) {
+			.layout {
+				width: 600px;
+			}
+		}
+		@media (min-width: 900px) {
+			.layout {
+				width: 800px;
+			}
+		}
+		@media (min-width: 1000px) {
+		  .layout {
+		    width: 900px;
+		  }
+		}
+		@media (min-width: 1200px) {
+		  .layout {
+		    width: 1100px;
+		  }
+		}
+		#page-cover {
+			display: none;
+		}
+		.bg {
+			position: absolute;
+			z-index: -1;
+			left: -10px;
+			top: -10px;
+			bottom: -10px;
+			right: -10px;
+			background: url(http://cloud.hunger-valley.com/music/public_tuijian_spring.jpg-big) center center no-repeat;
 			background-size: cover;
-			filter: blur(5px);
+			filter: blur(4px);
 		}
-
-
-
-
-		.content .interface {
+		.bg::before {
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			background: rgba(0,0,0,0.4);
+		}
+		main {
+			padding-top: 12vh;
+			height: calc(100% - 24vh);
+		}
+		main::after {
+			content: "";
+			display: block;
+			clear: both;
+		}
+		main .aside {
 			float: left;
-			margin-right: 110px;
 		}
-		.content .interface .album-img {
-			width: 350px;
-			height: 350px;
+		main .aside > figure {
+			width: 46vh;
+			height: 46vh;
+			background: url(http://cloud.hunger-valley.com/music/public_tuijian_spring.jpg-middle) center center no-repeat;
+			background-size: cover;
 		}
-		.content .interface .album-img img {
-			width: 100%;
-			height: 100%;
+		main .aside .actions {
+			display: flex;
+			margin-top: 4vh;
 		}
-		.content .interface .interface-panel {
+		main .aside .iconfont {
+			flex: 1;
 			text-align: center;
-			padding: 16px;
-		}
-		.content .interface .interface-panel span {
-			padding: 0 30px;
-			display: inline-block;
-			color: #fff;
+			font-size: 5vh;
+			color: rgba(255,255,255,0.5);
+			transition: color .4s;
 			cursor: pointer;
 		}
-		.content .interface .interface-panel span:hover {
-			color: #aaa;
-		}
-		.content .info {
-			margin-left: 500px;
-		}
-		.content .info .album-name {
-			display: inline-block;
-			background: red;
-			padding: 8px 15px;
-			color: #fff;
-			border-radius: 3px;
-			font-size: 15px;
-		}
-		.content .info .about {
-			margin-top: 30px;
-			font-size: 35px;
-			font-weight: 300;
-			margin-bottom: 100px;
+		main .aside .iconfont:hover {
 			color: #fff;
 		}
-		.content .info .data>span {
-			padding: 0 60px 0 0;
+		main .detail {
+			margin-left: 56vh;
 			color: #fff;
 		}
-		.content .info .progress {
-			width: 550px;
-			margin-top: 60px;
+		main .detail .tag {
+			font-size: 2vh;
+			padding: .4em .8em;
+			background: #2e6eec;
 		}
-		.content .info .progress .bar {
-			height: 3px;
-			margin-top: 5px;
-			background-color: rgba(0,0,0,0.2);
-			cursor: pointer;
+		main .detail h1 {
+			font-size: 6vh;
+			margin-top: 3vh;
 		}
-		.content .info .progress .progress-now {
-			background-color: #ccc;
-			height: 3px;
-			width: 0;
+		main .icons {
+			display: flex;
+			margin-top: 11vh;
+			font-size: 3vh;
+		}
+		main .icons li {
+			flex: 1;
+		}
+		main .icons .iconfont {
+			font-size: 3vh;
+			margin-right: 1vh;
+		}
+		main .area-bar {
+			margin-top: 10vh;
+			display: flex;
+			align-items: center;
+		}
+		main .area-bar .bar {
+			position: relative;
+			flex: 1;
+			height: .8vh;
+			border-radius: .2vh;
+			background: rgba(255,255,255,0.5);
+		}
+		main .area-bar .bar-progress {
+			position: absolute;
+			height: .8vh;
+			width: 10%;
+			border-radius: .2vh;
+			background-color: #fff;
+		}
+		main .area-bar .current-time {
+			width: 3vh;
+			font-size: 2vh;
+			margin-left: 1vh;
+		}
+		main .author {
+			font-size: 3vh;
+			margin-top: 3vh;
+		}
+		main .lyric {
+			font-size: 2vh;
+			margin-top: 2vh;
+		  color: rgba(255,255,255,0.5);
+		}
+
+		footer {
+			height: 24vh;
+			color: #fff;
+			background: rgba(255,255,255,0.2);
+			box-shadow: 0px -.25vh .25vh .25vh rgba(255,255,255,0.2);
+		}
+		footer > .layout {
 			position: relative;
 		}
-		.content .info .time,
-		.song-name,
-		.author {
-			color: #fff;
-			font-size: 18px;
-			margin-top: 10px;
+		footer .iconfont {
+			position: absolute;
+			top: 6vh;
+			font-size: 6vh;
+			color: rgba(255,255,255,0.5);
+			opacity: 0;
+			transition: all .4s;
+			cursor: pointer;
 		}
-		.content .info .time {
-			float: right;
+		footer:hover .iconfont {
+			opacity: 1;
 		}
-		
+		footer .iconfont:hover {
+			color: rgba(255,255,255,0.8);
+		}
+		footer .icon-left {
+			left: -8vh;
+		}
+		footer .icon-right {
+			right: -8vh;
+		}
+
+		footer .box {
+			position: relative;
+			overflow: hidden;
+			height: 24vh;
+		}
+		footer ul {
+			position: absolute;
+			left: 0;
+		}
+		footer ul:after {
+			content: "";
+			display: block;
+			clear: both;
+		}
+		footer li {
+			float: left;
+			margin-top: 1vh;
+			margin: 2vh 2vh 0 2vh;
+			width: 20vh;
+			height: 20vh;
+			text-align: center;
+			cursor: pointer;
+		}
+		footer li:hover {
+			box-shadow: 0 0 .5vh .5vh rgba(255,255,255,0.8);
+		}
+		footer li .cover {
+			height: 16vh;
+			background-size: cover;
+			background-position: center center;
+		}
+		footer h3 {
+			font-size: 2vh;
+			color: rgba(255,255,255,0.6);
+			margin-top: 1vh;
+		}
+		footer li.active {
+			box-shadow: 0 0 .5vh .5vh rgba(255,255,255,0.8);
+		}
 	</style>
 </head>
 <body>
-	<div class="cover"></div>
-	<div class="content">
-		<div class="interface clearfix">
-			<div class="album-img"></div>
-			<div class="interface-panel">
-				<span class="iconfont icon-like"></span>
-				<span class="iconfont icon-pause"></span>
-				<span class="iconfont icon-next"></span>
-			</div>
-		</div>
-		<div class="info clearfix">
-			<div class="album-name"></div>
-			<div class="about"></div>
-			<div class="data">
-				<span class=" iconfont icon-listen">&nbsp;&nbsp;666</span>
-				<span class="iconfont icon-like">&nbsp;&nbsp;888</span>
-				<span class="iconfont icon-R">&nbsp;&nbsp;LavaRadio</span>
-			</div>
-			<div class="progress">
-				<div class="bar">
-					<div class="progress-total"></div>
-					<div class="progress-now"></div>
+	<section id="page-music">
+		<main class="layout">
+			<div class="aside">
+				<figure></figure>
+				<div class="actions">
+					<span class="iconfont icon-like"></span>
+					<span class="iconfont icon-play"></span>
+					<span class="iconfont icon-next"></span>
 				</div>
 			</div>
-			<div class="time clear-fix">0:00</div>
-			<div class="song-name">kushuhaha</div>
-			<div class="author">zhangnanji</div>
-		</div>
-		<ul class="album-list clear-fix">
-			<li>
-				<img src="" alt="">
-				<p>1</p>
-			</li>
-			<li>
-				<img src="" alt="">
-				<p>2</p>
-			</li>
-			<li>
-				<img src="" alt="">
-				<p>3</p>
-			</li>
-			<li>
-				<img src="" alt="">
-				<p>4</p>
-			</li>
-			<li>
-				<img src="" alt="">
-				<p>5</p>
-			</li>
-			<li>
-				<img src="" alt="">
-				<p>6</p>
-			</li>
-		</ul>
-	</div>
-	<div class="play hide">
-		<div class="play-img"></div>
-		<div class="update">
-			<div class="play-bar">
-				<div class="play-progress-total"></div>
-				<div class="play-progress-now"></div>
+			<div class="detail">
+				<sapn class="tag">九零后</sapn>
+				<h1>It's a new day</h1>
+				<ul class="icons">
+					<li><span class="iconfont icon-listen"></span>8888</li>
+					<li><span class="iconfont icon-like"></span>999</li>
+					<li><span class="iconfont icon-agree"></span>6666</li>
+				</ul>
+				<div class="area-bar">
+					<div class="bar">
+						<div class="bar-progress"></div>
+					</div>
+					<div class="current-time">1:05</div>
+				</div>
+				<div class="author">周杰伦</div>
+				<div class="lyric">
+					<p>hello world</p>
+				</div>
 			</div>
-			<div class="play-time clearfix"></div>
-			<div class="play-title"></div>
-			<div class="play-author"></div>
-		</div>
-	</div>
+		</main>
+		<footer>
+			<div class="layout">
+				<span class="iconfont icon-left"></span>
+				<span class="iconfont icon-right"></span>
+				<div class="box">
+					<ul>
+						<li>
+							<div class="cover" style="background-image:url(http://cloud.hunger-valley.com/music/public_tuijian_spring.jpg-small)"></div>
+							<h3>漫步春天</h3>
+						</li>
+						<li>
+							<div class="cover" style="background-image:url(http://cloud.hunger-valley.com/music/public_tuijian_spring.jpg-small)"></div>
+							<h3>漫步春天</h3>
+						</li>
+						<li>
+							<div class="cover" style="background-image:url(http://cloud.hunger-valley.com/music/public_tuijian_spring.jpg-small)"></div>
+							<h3>漫步春天</h3>
+						</li>
+						<li>
+							<div class="cover" style="background-image:url(http://cloud.hunger-valley.com/music/public_tuijian_spring.jpg-small)"></div>
+							<h3>漫步春天</h3>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</footer>
+	</section>
+	<section id="page-cover"></section>
+	<div class="bg"></div>
+
+	<script>
+		var EventCenter = {
+			on: function(type, handler){
+				$(document).on(type, handler)
+			},
+			fire: function(type, data){
+				$(document).trigger(type, data)
+			}
+		}
+
+
+		var Footer = {
+			//初始化
+			init: function(){
+				this.$footer = $("footer")
+				this.$ul = this.$footer.find("ul")
+				this.$box = this.$footer.find(".box")
+				this.$leftBtn = this.$footer.find(".icon-left")
+				this.$rightBtn = this.$footer.find(".icon-right")
+				this.isToEnd = false
+				this.isToStart = true
+				this.bind()
+				this.render()
+			},
+			//绑定事件
+			bind: function(){
+				var _this = this
+				this.$rightBtn.on("click", function(){
+					var itemWidth = _this.$box.find("li").outerWidth(true)
+					var rowCount = Math.floor(_this.$box.width()/itemWidth)
+					if(!_this.isToEnd){
+						_this.$ul.animate({
+							left: "-="+rowCount*itemWidth
+						},400,function(){
+							_this.isToStart = false
+							if(parseFloat(_this.$box.width()) - parseFloat(_this.$ul.css("left")) >= parseFloat(_this.$ul.css("width"))){
+								_this.isToEnd = true
+							}
+						})
+					}
+				})
+				this.$leftBtn.on("click", function(){
+					var itemWidth = _this.$box.find("li").outerWidth(true)
+					var rowCount = Math.floor(_this.$box.width()/itemWidth)
+					if(!_this.isToStart){
+						_this.$ul.animate({
+							left: "+="+rowCount*itemWidth
+						},400,function(){
+							_this.isToEnd = false
+							if(parseFloat(_this.$ul.css("left")) >= 0){
+								_this.isToStart = true
+							}
+						})
+					}
+				})
+				this.$footer.on("click","li",function(){
+					$(this).addClass("active")
+					.siblings().removeClass("active")
+
+					EventCenter.fire("select-album", $(this).attr("data-channel-id"))
+				})
+			},
+			//渲染页面
+			render: function(){
+				var _this = this
+				$.getJSON("http://api.jirengu.com/fm/getChannels.php")
+					.done(function(ret){
+						console.log(ret)
+						_this.renderFooter(ret.channels)
+					}).fail(function(){
+						console.log("error")
+					})
+			},
+			renderFooter: function(channels){
+				console.log(channels)
+				var html = ""
+				channels.forEach(function(channels){
+					html += '<li data-channel-id='+channels.channel_id+'>'
+		            + '<div class="cover" style="background-image:url('+channels.cover_small+')"></div>'
+		            + '<h3>'+channels.name+'</h3>'
+		            +'</li>'
+				})
+				this.$ul.html(html)
+				this.setStyle()
+			},
+			setStyle: function(){
+				var count = this.$footer.find("li").length
+				var width = this.$footer.find("li").outerWidth(true)
+				this.$ul.css({
+					width: count * width + "px"
+				})
+			}
+		}
+		var App = {
+			init: function(){
+				this.bind()
+			},
+			bind: function(){
+				EventCenter.on("select-album", function(e,data){
+					console.log("select", data)
+				})
+			}
+		}
+		Footer.init()
+		App.init()
+	</script>
 </body>
 </html>
