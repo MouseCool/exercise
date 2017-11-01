@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>musicplay</title>
 	<link rel="stylesheet" href="//at.alicdn.com/t/font_382229_urb5vlwd3knpnwmi.css">
 	<style>
 		* {
@@ -116,9 +116,9 @@
 		<div class="music-panel">
 			<div class="music">
 				<div class="control">
-					<span class="back"><i class="iconfont icon-last"></i></span>
-					<span class="play"><i class="iconfont icon-pause"></i></span>
-					<span class="forward"><i class="iconfont icon-next"></i></span>
+					<span class="back"><i class="btn-last iconfont icon-last"></i></span>
+					<span class="play"><i class="btn-play iconfont icon-pause"></i></span>
+					<span class="forward"><i class="btn-next iconfont icon-next"></i></span>
 				</div>
 				<div class="info">
 					<div class="title">mysong</div>
@@ -176,14 +176,14 @@
 		}
 
 		$(".musicbox .play").onclick = function(){
-			if(audio.paused){
-				audio.play()
+			if(audio.pauseed){
 				this.querySelector(".iconfont").classList.remove("icon-play")
 				this.querySelector(".iconfont").classList.add("icon-pause")
+				audio.play()
 			}else{
-				audio.pause()
 				this.querySelector(".iconfont").classList.remove("icon-pause")
 				this.querySelector(".iconfont").classList.add("icon-play")
+				audio.pause()
 			}
 		}
 
@@ -224,16 +224,15 @@
 			}	
 		}
 
-
-
 		function loadMusic(musicObj){
 			console.log("begin play", musicObj)
 			$(".musicbox .title").innerText = musicObj.title
 			$(".musicbox .auther").innerText = musicObj.auther
 			$(".cover").style.background = "url(" + musicObj.img + ")"
+			$(".musicbox .play .btn-play").classList.remove("icon-play")
+			$(".musicbox .play .btn-play").classList.add("icon-pause")
 			audio.src = musicObj.src
 		}
-
 
 
 		function $(selector){
