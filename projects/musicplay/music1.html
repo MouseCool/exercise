@@ -176,7 +176,7 @@
 		}
 
 		$(".musicbox .play").onclick = function(){
-			if(audio.pauseed){
+			if(audio.paused){
 				this.querySelector(".iconfont").classList.remove("icon-play")
 				this.querySelector(".iconfont").classList.add("icon-pause")
 				audio.play()
@@ -225,7 +225,6 @@
 		}
 
 		function loadMusic(musicObj){
-			console.log("begin play", musicObj)
 			$(".musicbox .title").innerText = musicObj.title
 			$(".musicbox .auther").innerText = musicObj.auther
 			$(".cover").style.background = "url(" + musicObj.img + ")"
